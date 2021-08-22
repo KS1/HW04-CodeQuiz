@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- Added title -->
+    <title>Code Quiz</title>
+    <!-- Added favicon -->
+    <link rel="icon" href="./assets/images/quizIcon.png" sizes="16x16" type="image/png">
+    <!-- Added stylesheet -->
+    <link rel="stylesheet" href="./assets/css/style.css" /> 
+</head>
+<body>
+    <div class="wrapper">
+
+        <div class="container">
+          <!-- <p class="card-contents-timer">Timer = <span id="timerTime">90</span></p>
+          <p class="card-contents-highscore">View High score</p> -->
+
+          <div class= "card-contents"></div>
+            <!-- <p class="card-contents-timer">Timer = <span id="timerTime">90</span></p>
+            <p class="card-contents-highscore">View High score</p> -->
+            <h1>Coding Quiz Challenge</h1>
+            <p class="card-contents-p">Try to anwser the following code related questions
+               within the time limit. Keep in mind that incorrect 
+               answers will penalize your score time by ten seconds.
+            </p>            
+            <button id="submit">Start Quiz</button>                
+
+            <!-- <form>
+              <input placeholder="name" id="name" />
+              <input placeholder="email" id="email" />
+              <button id="submit">Submit</button>
+              <div>
+                <h3 id="response"></h3>
+              </div>
+            </form> -->
+
+            <!-- One "tab" for each step in the form: -->
+            <div class="tab" style="overflow:auto;">Name:
+              <p><input placeholder="First name..." oninput="this.className = ''" name="fname"></p>
+              <p><input placeholder="Last name..." oninput="this.className = ''" name="lname"></p>
+
+              <p><button placeholder="First name..." oninput="this.className = ''" name="fname"></p>
+              <p><button placeholder="Last name..." oninput="this.className = ''" name="lname"></p>
+
+            </div>
+            <div class="tab">Contact Info:
+              <p><input placeholder="E-mail..." oninput="this.className = ''" name="email"></p>
+              <p><input placeholder="Phone..." oninput="this.className = ''" name="phone"></p>
+            </div>
+
+
+          </div>
+        </div>
+    </div>
+
+    <!-- Added script file -->
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>
