@@ -183,7 +183,7 @@ function showHighscores() {
 }
 
 function goBackToFirstPage () {
-    document.location.href="/";
+    document.location.href="/HW04-CodeQuiz/";
     return;
 }
 
