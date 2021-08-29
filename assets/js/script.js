@@ -5,6 +5,9 @@ var answer1button = document.querySelector("#answer1button");
 // var timing = document.getElementsByClassName("card-contents-timer");
 var timing = document.querySelector(".card-contents-timer");
 
+var finalScoreText = document.querySelector("#finalScore");
+var finalScore = 0;
+
 console.log("startQuizEl object: " + startQuizEl);
 console.log("answer1button object: " + answer1button);
 
@@ -28,7 +31,7 @@ function startQuiz(event) {
     x[0].style.display = "none";
 
     // This function will display the specified tab of the form...
-    var x = document.getElementsByClassName("tabQ1");
+    var x = document.getElementsByClassName("tab");
     x[0].style.display = "block";
 
     var b = document.getElementById("question");
@@ -100,8 +103,17 @@ function moveToNextWizardPage() {
         document.getElementById("answer4button").innerHTML = questions[countQuestions].answers[3].a;
         document.getElementById("answer4button").dataset.correct = questions[countQuestions].answers[3].correct   
     } else {
-        // load score page
-        console.log("load score page");
+        // load quiz completed page
+        console.log("load quiz completed page");
+        timing.style.display = "none";
+
+        var x = document.getElementsByClassName("tab");
+        x[0].style.display = "none";   
+        var x = document.getElementsByClassName("quizCompletePage");
+        x[0].style.display = "block";
+
+        finalScoreText.innerHTML = finalScore + ".";
+
     }
 
 
@@ -159,6 +171,21 @@ function checkIfAnswer4IsCorrect (event) {
     moveToNextWizardPage();
 }
 
+function showHighscores() {
+
+    var x = document.getElementsByClassName("quizCompletePage");
+    x[0].style.display = "none";
+
+    var x = document.getElementsByClassName("highScorePage");
+    x[0].style.display = "block";
+    
+    return;
+}
+
+function goBackToFirstPage () {
+    document.location.href="/";
+    return;
+}
 
 // Add listener to submit element
 startQuizEl.addEventListener("click", startQuiz);
@@ -167,6 +194,10 @@ answer1button.addEventListener("click", checkIfAnswer1IsCorrect);
 answer2button.addEventListener("click", checkIfAnswer2IsCorrect);
 answer3button.addEventListener("click", checkIfAnswer3IsCorrect);
 answer4button.addEventListener("click", checkIfAnswer4IsCorrect);
+
+quizCompleteSubmit.addEventListener("click", showHighscores)
+
+goBackButton.addEventListener("click", goBackToFirstPage)
 
 // [{"q1"}, "q2", "q3"]
 

@@ -20,8 +20,7 @@
 
             <div class= "card-contents"></div>
 
-            <div class="firstpage"> 
-             
+            <div class="firstpage">              
               <!--  <p class="card-contents-highscore">View High score</p> -->
               <h1>Coding Quiz Challenge</h1>
               <p class="card-contents-p">Try to anwser the following code related questions
@@ -32,19 +31,31 @@
             </div>
 
             <p id="timerPara" class="card-contents-timer">Timer = <span id="timerTime">90</span></p>
-            <!-- One "tab" for each step in the form: -->
+           
             <div id="wizard"> 
-                <div class="tabQ1" style="overflow:auto;">
+                <div class="tab" style="overflow:auto;">
                   <p id="question"> Question 1:  </p> 
                   <p> <button id="answer1button" name="btnAnswer1" class="answer-button" data-correct=""> Answer 1 </button> </p>
-                  <p> <button id="answer2button" name="btnAnswer2" class="answer-button"> Answer 2 </button> </p>
-                  <p> <button id="answer3button" name="btnAnswer3" class="answer-button"> Answer 3 </button> </p>
-                  <p> <button id="answer4button" name="btnAnswer4" class="answer-button"> Answer 4 </button> </p>
-                </div>
-                
-              </div>
-
-            <!-- create div for scores page -->
+                  <p> <button id="answer2button" name="btnAnswer2" class="answer-button" data-correct=""> Answer 2 </button> </p>
+                  <p> <button id="answer3button" name="btnAnswer3" class="answer-button" data-correct=""> Answer 3 </button> </p>
+                  <p> <button id="answer4button" name="btnAnswer4" class="answer-button" data-correct=""> Answer 4 </button> </p>
+                </div>                
+            </div>
+            <div class="quizCompletePage">  
+                  <h1> All done! </h1> 
+                  <p> Your final score is <span id="finalScore">0</span></p> 
+                  <label> Enter initials: </label>
+                  <input> </input> 
+                  <button id="quizCompleteSubmit">Submit</button>
+            </div>
+            <!-- create div for high scores page -->
+            <div class="highScorePage">  
+              <h1> Highscores </h1> 
+              <p><span id="highScore">0</span></p> 
+              
+              <button id="goBackButton">Go Back</button>
+              <button id="clearHighscoresButton">Clear highscores</button>
+        </div>
 
           </div> <!-- container -->
 
