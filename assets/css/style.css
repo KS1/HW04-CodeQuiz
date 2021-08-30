@@ -56,16 +56,10 @@ body {
       color: white;
     }
   
-    .highScoreSpan {
-      /* background-color: #c9c2f5; */
+    .highScoreSpan {      
       font-size: 20px;
-      color: indigo;
-      /* border-style: groove; */
-      padding: 10px;
-      /* Apply margin to all four sides */
-      /* margin: 20px;  */
-      /* min-width: 100px;
-      min-height: 50px; */
+      color: indigo;     
+      padding: 10px;      
     }
 
     input {
@@ -87,6 +81,7 @@ body {
       transition: 0.3s;
       width: 60vw;
       background-color: #f0ead6;
+      /* background-color: #729681; */
     }
   
   .card-contents {
@@ -115,25 +110,6 @@ body {
       margin-right: 5%;
     }
 
-  /* #name,
-  #email,
-  #submit {
-      width: 80%;
-      padding: 12px 20px;
-      margin: 8px 20px;
-      box-sizing: border-box;
-      font-size: 18px;
-    } */
-  
-  #submit {
-      width: 20%;
-      /* vertical | horizontal */
-      padding: 10px 20px;
-      margin: 8px 20px;
-      box-sizing: border-box;
-      font-size: 18px;
-    }
-
     .firstpage {
       display: block;
     }
@@ -151,36 +127,10 @@ body {
       display: none;
     }
 
-    /* .highScoreLabelClass {
-      min-width: 100px;
-      min-height: 100px;
-      border-style: solid;
-      flex: 1 0 200px; */
-      /* padding: 10px;
-      text-align: center;
-      border-style: solid;
-      border-width: 1px; */
-    /* } */
+    #hrId {
+      display: none;
+      margin-left: 15%;     
+    }
 
-
-    /* .tabQ1 {
-      display: none;
-    }
-    .tabQ2 {
-      display: none;
-    }
-    .tabQ3 {
-      display: none;
-    }
-    .tabQ4 {
-      display: none;
-    }
-    .tabQ5 {
-      display: none;
-    } */
-  
-  /* #response {
-        padding-bottom: 30px;
-    }
-   */
+   
   

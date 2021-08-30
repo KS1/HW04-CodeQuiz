@@ -13,15 +13,11 @@
 </head>
 <body>
     <div class="wrapper">
-
-        <div class="container">
-          <!-- <p class="card-contents-timer">Timer = <span id="timerTime">90</span></p>
-          <p class="card-contents-highscore">View High score</p> -->
+        <div class="container">  
 
             <div class= "card-contents"></div>
 
-            <div class="firstpage">              
-              <!--  <p class="card-contents-highscore">View High score</p> -->
+            <div class="firstpage">  
               <h1>Coding Quiz Challenge</h1>
               <p class="card-contents-p">Try to anwser the following code related questions
                 within the time limit. Keep in mind that incorrect 
@@ -39,6 +35,8 @@
                   <p> <button id="answer2button" name="btnAnswer2" class="answer-button" data-correct=""> Answer 2 </button> </p>
                   <p> <button id="answer3button" name="btnAnswer3" class="answer-button" data-correct=""> Answer 3 </button> </p>
                   <p> <button id="answer4button" name="btnAnswer4" class="answer-button" data-correct=""> Answer 4 </button> </p>
+                  <hr id="hrId">
+                  <p> <label id="userAnswer"> </label></p>
                 </div>                
             </div>
             <div class="quizCompletePage">  
@@ -51,16 +49,13 @@
             <!-- create div for high scores page -->
             <div class="highScorePage">  
               <h1> Highscores </h1> 
-              <p><span id="highScore" class="highScoreSpan">0</span></p>          
-              <!-- <p><label id="highScoreLabel" class="highScoreLabelClass">0</label></p>          -->
+              <p><span id="highScore" class="highScoreSpan">0</span></p> 
               <button id="goBackButton" class="highScorePageButton">Go Back</button>
               <button id="clearHighscoresButton" class="highScorePageButton">Clear highscores</button>
-        </div>
+            </div>
 
-          </div> <!-- container -->
-
-    </div>
-    <!-- </div> -->
+      </div> <!-- container -->
+    </div> <!-- wrapper -->  
 
     <!-- Added script file -->
     <script src="./assets/js/questions.js"></script>
