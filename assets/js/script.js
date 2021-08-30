@@ -2,27 +2,34 @@ var startQuizEl = document.querySelector("#btnStartQuiz");
 var timerText = document.querySelector("#timerTime");
 var answer1button = document.querySelector("#answer1button");
 
+
 // var timing = document.getElementsByClassName("card-contents-timer");
 var timing = document.querySelector(".card-contents-timer");
 
 var finalScoreText = document.querySelector("#finalScore");
-var finalScore = 0;
+var initialsInputText = document.querySelector("#initialsInput");
 
-console.log("startQuizEl object: " + startQuizEl);
-console.log("answer1button object: " + answer1button);
+// console.log("startQuizEl object: " + startQuizEl);
+// console.log("answer1button object: " + answer1button);
 
-var timerTime = 5;
+// each question has 10 seconds
+var timerTime = 50;
+// there are five questions
 var countQuestions = 0;
+// there are four answers to choose from
 var countAnswers = 4;
+// each question carries 10 points score
 var myScore = 0;
+var forcedStoppedTimer = false;
 
 // Action to be performed on click store in named function
 function startQuiz(event) {
     // Prevent default action
     event.preventDefault();
 
-    console.log(event);
-    console.log("timing: " + timing);
+    // console.log(event);
+    // console.log("timing: " + timing);
+
     // console.log("timing[0]: " + timing[0]);
     // timing[0].style.display = "block";
     timing.style.display = "block";
@@ -52,34 +59,37 @@ function startQuiz(event) {
     // document.getElementById("answer3button").innerHTML = "changedAnswer3 Text"; 
     // document.getElementById("answer4button").innerHTML = "changedAnswer4 Text"; 
 
-    console.log(b.innerHTML);
+    // console.log(b.innerHTML);
     
-        if(document.getElementById("answer1button").dataset.correct == false){
+    if(document.getElementById("answer1button").dataset.correct == false){
             console.log("incorrect");
-        }
+    }
     
-    console.log(x[0]);
+    // console.log(x[0]);
 
     // uncomment this to start the timer
-    // var counter = setInterval(function() {
-    //     checkTime();
-    //     if(timerTime <= 0){
-    //         clearInterval(counter)
-    //     }
+    var counter = setInterval(function() {       
+        if(timerTime <= 0){
+            clearInterval(counter)
+            if(!forcedStoppedTimer)
+                window.alert("Code quiz timed out.");
+            // load quiz completed page
+            loadQuizCompletedPage();
+        }
+        checkTime();
+    }, 1000);
 
-    // }, 1000);
+    console.log("startQuiz checkTime: " + timerTime + " counter: " + counter);
 
 }
 
 function checkTime() {
     timerTime--;
     timerText.innerHTML = timerTime;
-
-    console.log("here")
-    //   return;
+    console.log("checkTime: " + timerTime);
 }
 
-console.log(checkTime)
+// console.log(checkTime)
 
 function moveToNextWizardPage() {
     console.log("Inside moveToNextWizardPage function");
@@ -104,7 +114,17 @@ function moveToNextWizardPage() {
         document.getElementById("answer4button").dataset.correct = questions[countQuestions].answers[3].correct   
     } else {
         // load quiz completed page
-        console.log("load quiz completed page");
+        loadQuizCompletedPage();
+    }
+}
+
+function loadQuizCompletedPage()
+{
+    console.log("Inside loadQuizCompletedPage function.");
+        // stop timer
+        timerTime = 0;
+        forcedStoppedTimer = true;
+
         timing.style.display = "none";
 
         var x = document.getElementsByClassName("tab");
@@ -112,11 +132,10 @@ function moveToNextWizardPage() {
         var x = document.getElementsByClassName("quizCompletePage");
         x[0].style.display = "block";
 
-        finalScoreText.innerHTML = finalScore + ".";
-
-    }
-
-
+        if(myScore == 50)
+            finalScoreText.innerHTML = myScore + ". Congratulations!";
+        else 
+            finalScoreText.innerHTML = myScore + ".";
 }
 
 function checkIfAnswer1IsCorrect (event) {
@@ -126,9 +145,15 @@ function checkIfAnswer1IsCorrect (event) {
 
     if(document.getElementById("answer1button").dataset.correct == "true"){
         console.log("Inside checkIfAnswer1IsCorrect function - answer 1 is correct");
-    }else
-    console.log("Inside checkIfAnswer1IsCorrect function - answer 1 is incorrect");
-
+        myScore += 10;
+        console.log("My score is - " + myScore);
+    } else {        
+        console.log("Inside checkIfAnswer1IsCorrect function - answer 1 is incorrect");
+        // Subtract time by 10 seconds
+        timerTime -= 10;
+        console.log("Timer time after subtraction: " + timerTime);
+    }
+    
     moveToNextWizardPage();
 }
 
@@ -139,8 +164,14 @@ function checkIfAnswer2IsCorrect (event) {
 
     if(document.getElementById("answer2button").dataset.correct == "true"){
         console.log("Inside checkIfAnswer2IsCorrect function - answer 2 is correct");
-    }else
-    console.log("Inside checkIfAnswer2IsCorrect function - answer 2 is incorrect");
+        myScore += 10;
+        console.log("My score is - " + myScore);
+    }else {
+        console.log("Inside checkIfAnswer2IsCorrect function - answer 2 is incorrect");
+         // Subtract time 
+         timerTime -= 10;
+         console.log("Timer time after subtraction: " + timerTime);
+    }
 
     moveToNextWizardPage();
 }
@@ -151,8 +182,16 @@ function checkIfAnswer3IsCorrect (event) {
 
     if(document.getElementById("answer3button").dataset.correct == "true"){
         console.log("Inside checkIfAnswer3IsCorrect function - answer 3 is correct");
-    }else
-    console.log("Inside checkIfAnswer3IsCorrect function - answer 3 is incorrect");
+        myScore += 10;
+        console.log("My score is - " + myScore);
+    }else {
+
+        console.log("Inside checkIfAnswer3IsCorrect function - answer 3 is incorrect");
+         // Subtract time 
+         timerTime -= 10;
+         console.log("Timer time after subtraction: " + timerTime);
+    }
+    
 
     moveToNextWizardPage();
 }
@@ -163,27 +202,62 @@ function checkIfAnswer4IsCorrect (event) {
 
     if(document.getElementById("answer4button").dataset.correct == "true"){
         console.log("Inside checkIfAnswer4IsCorrect function - answer 4 is correct");
+        myScore += 10;
+        console.log("My score is - " + myScore);
     }
-    else
+    else {
         console.log("Inside checkIfAnswer4IsCorrect function - answer 4 is incorrect");
+        // Subtract time 
+        timerTime -= 10;
+        console.log("Timer time after subtraction: " + timerTime);
+    }
 
 
     moveToNextWizardPage();
 }
 
 function showHighscores() {
+    console.log("Inside showHighscores function");
+
+    // TODO: validation code commenting out because code does not work
+    // if(document.getElementById("initialsInput").innerHTML === "")
+    // {
+    //     window.alert("Please enter initials.");
+    //     return;
+    // }
+  
 
     var x = document.getElementsByClassName("quizCompletePage");
     x[0].style.display = "none";
-
+    
     var x = document.getElementsByClassName("highScorePage");
     x[0].style.display = "block";
     
+    
+    var highScoreStorage = "1, " + document.getElementById("initialsInput").value + " - " + myScore;
+
+    localStorage.setItem("HighScore", highScoreStorage);
+  
+
+    // console.log(document.getElementById("initialsInput").value);
+    document.getElementById("highScore").innerHTML = highScoreStorage;
+    // document.getElementById("highScoreLabel").innerHTML = "1, " + document.getElementById("initialsInput").value + " - " + myScore;
+
+    // console.log("My score is - " + myScore);
+
     return;
 }
 
+function clearHighscores()
+{
+    document.getElementById("highScore").innerHTML = "";
+    // document.getElementById("highScoreLabel").innerHTML = "";
+    localStorage.removeItem("HighScore");
+}
+
 function goBackToFirstPage () {
-    document.location.href="/";
+    // Redirect to home page
+    document.location.href="/HW04-CodeQuiz/";
     return;
 }
 
@@ -198,6 +272,7 @@ answer4button.addEventListener("click", checkIfAnswer4IsCorrect);
 quizCompleteSubmit.addEventListener("click", showHighscores)
 
 goBackButton.addEventListener("click", goBackToFirstPage)
+clearHighscoresButton.addEventListener("click", clearHighscores)
 
 // [{"q1"}, "q2", "q3"]
 

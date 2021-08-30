@@ -17,6 +17,11 @@ body {
       opacity: 0.8;
     }
 
+    .questionPara {
+      color: indigo;
+      font-size: medium;
+    }
+    
     .answer-button {
       /* Apply to all four sides */
       padding: 10px;
@@ -26,9 +31,44 @@ body {
       font-size: 16px;
       background-color: #7226a5;
       color: white;
+      width: 250px;
     }
 
-  input {
+    .quiz-complete-submit {
+      /* Apply to all four sides */
+      padding: 4px;
+      /* Apply margin to all four sides */
+      margin: 10px;     
+      cursor: pointer;
+      font-size: 14px;
+      background-color: #247BA0;
+      color: white;
+    }
+
+    .highScorePageButton {
+      /* Apply to all four sides */
+      padding: 6px;
+      /* Apply margin to all four sides */
+      margin: 10px;     
+      cursor: pointer;
+      font-size: 16px;
+      background-color: #247BA0;
+      color: white;
+    }
+  
+    .highScoreSpan {
+      /* background-color: #c9c2f5; */
+      font-size: 20px;
+      color: indigo;
+      /* border-style: groove; */
+      padding: 10px;
+      /* Apply margin to all four sides */
+      /* margin: 20px;  */
+      /* min-width: 100px;
+      min-height: 50px; */
+    }
+
+    input {
     background-color: #f7f7f7;
     }
   
@@ -59,6 +99,7 @@ body {
       margin-right: 25%;
       padding-top: 20px;
       padding-bottom: 20px;
+      font-size: large;
     }
 
     .card-contents-timer {
@@ -109,6 +150,18 @@ body {
     .highScorePage {
       display: none;
     }
+
+    /* .highScoreLabelClass {
+      min-width: 100px;
+      min-height: 100px;
+      border-style: solid;
+      flex: 1 0 200px; */
+      /* padding: 10px;
+      text-align: center;
+      border-style: solid;
+      border-width: 1px; */
+    /* } */
+
 
     /* .tabQ1 {
       display: none;
