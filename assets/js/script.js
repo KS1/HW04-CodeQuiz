@@ -102,7 +102,6 @@ function moveToNextWizardPage() {
 
 function loadQuizCompletedPage()
 {
-    console.log("Inside loadQuizCompletedPage function.");
         // stop timer
         timerTime = 0;
         forcedStoppedTimer = true;
@@ -126,10 +125,10 @@ function loadQuizCompletedPage()
 function checkIfAnswer1IsCorrect (event) {    
     if(answer1button.dataset.correct == "true"){
         document.getElementById("hrId").style.display = "block";
-        userAnswerText.innerHTML = "Correct";    
         myScore += 10;        
+        userAnswerText.innerHTML = "Correct - Your score is " + myScore;      
     } else {        
-         userAnswerText.innerHTML = "Wrong";    
+         userAnswerText.innerHTML = "Wrong - Your score is " + myScore;    
         // Subtract time by 10 seconds if the answer is wrong
         timerTime -= 10;        
     }    
@@ -138,12 +137,10 @@ function checkIfAnswer1IsCorrect (event) {
 
 function checkIfAnswer2IsCorrect (event) {
      if(answer2button.dataset.correct == "true"){
-        console.log("Inside checkIfAnswer2IsCorrect function - answer 2 is correct");
-        userAnswerText.innerHTML = "Correct";
         myScore += 10;
-        console.log("My score is - " + myScore);
+        userAnswerText.innerHTML = "Correct - Your score is " + myScore;         
     }else {
-        userAnswerText.innerHTML = "Wrong";
+        userAnswerText.innerHTML = "Wrong - Your score is " + myScore;    
          // Subtract time by 10 seconds if the answer is wrong
          timerTime -= 10;
      }
@@ -152,30 +149,23 @@ function checkIfAnswer2IsCorrect (event) {
 
 function checkIfAnswer3IsCorrect (event) {
     if(answer3button.dataset.correct == "true"){
-        console.log("Inside checkIfAnswer3IsCorrect function - answer 3 is correct");
-        userAnswerText.innerHTML = "Correct";
         myScore += 10;
-        console.log("My score is - " + myScore);
-    }else {
-        console.log("Inside checkIfAnswer3IsCorrect function - answer 3 is incorrect");
-        userAnswerText.innerHTML = "Wrong";
+        userAnswerText.innerHTML = "Correct - Your score is " + myScore;   
+    }else {        
+        userAnswerText.innerHTML = "Wrong - Your score is " + myScore;   
          // Subtract time by 10 seconds if the answer is wrong
          timerTime -= 10;
-         console.log("Timer time after subtraction: " + timerTime);
     }    
     moveToNextWizardPage();
 }
 
 function checkIfAnswer4IsCorrect (event) {
     if(answer4button.dataset.correct == "true"){
-        console.log("Inside checkIfAnswer4IsCorrect function - answer 4 is correct");
-        userAnswerText.innerHTML = "Correct";
         myScore += 10;
-        console.log("My score is - " + myScore);
+        userAnswerText.innerHTML = "Correct - Your score is " + myScore;  
     }
     else {
-        console.log("Inside checkIfAnswer4IsCorrect function - answer 4 is incorrect");
-        userAnswerText.innerHTML = "Wrong";
+        userAnswerText.innerHTML = "Wrong - Your score is " + myScore;  
         // Subtract time by 10 seconds if the answer is wrong
         timerTime -= 10;
     }
