@@ -187,7 +187,7 @@ function showHighscores() {
         window.alert("Please enter initials.");
         return;
     }  
-    
+
     var x = document.getElementsByClassName("quizCompletePage");
     x[0].style.display = "none";
     
@@ -232,7 +232,6 @@ function goBackToFirstPage () {
 
 function showHighscore() {
 
-    highScoreSpanText.innerHTML = " ha ha ";
     if (highScoreDiv.style.display == "block")
         highScoreDiv.style.display = "none";
     else
