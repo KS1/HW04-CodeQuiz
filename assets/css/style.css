@@ -98,11 +98,17 @@ body {
     }
 
     .card-contents-timer {
-        float:right;
+        /* float:right; */
         margin-left: 5%;
         margin-right: 5%;
         display: none;
       }
+
+    .highscoreParaClass {
+      /* float:left; */
+      margin-left: 5%;
+      margin-right: 5%;
+    }
 
     .card-contents-highscore {
       float:left;

@@ -11,6 +11,11 @@ var userAnswerText = document.querySelector("#userAnswer");
 var timing = document.querySelector(".card-contents-timer");
 var finalScoreText = document.querySelector("#finalScore");
 var initialsInputText = document.querySelector("#initialsInput");
+var highScoreSpanText = document.querySelector("#highScoreSpan");
+var highScoreDiv = document.querySelector("#viewHighScoreDiv");
+var highscorePara = document.querySelector("#highscorePara");
+
+var highScoreStorageArray = [] ;
 
 // each question has 10 seconds
 var timerTime = 50;
@@ -29,6 +34,8 @@ function startQuiz(event) {
 
     // display the time on the page
     timing.style.display = "block";
+
+    highScoreDiv.style.display = "none";
 
     // hide the first page
     var x = document.getElementsByClassName("firstpage");
@@ -174,24 +181,37 @@ function checkIfAnswer4IsCorrect (event) {
 
 function showHighscores() {
  
-    // TODO: validation code commented out because code does not work
-    // if(document.getElementById("initialsInput").innerHTML === "")
-    // {
-    //     window.alert("Please enter initials.");
-    //     return;
-    // }  
-
+    // validation code for initials
+    if(document.getElementById("initialsInput").value === "")
+    {
+        window.alert("Please enter initials.");
+        return;
+    }  
+    
     var x = document.getElementsByClassName("quizCompletePage");
     x[0].style.display = "none";
     
     var x = document.getElementsByClassName("highScorePage");
     x[0].style.display = "block";    
     
-    var highScoreStorage = "1, " + document.getElementById("initialsInput").value + " - " + myScore;
+    highscorePara.style.display = "none";
+    viewHighScoreDiv.style.display = "none"
+    
+    highScoreStorageArray = JSON.parse(localStorage.getItem("HighScore"));
+    
+    if (highScoreStorageArray == null)
+    {    
+        highScoreStorageArray = ["1, " + document.getElementById("initialsInput").value + " - " + myScore];
+        document.getElementById("highScore").innerHTML = highScoreStorageArray.toString();   
+    }
+    else
+    {
+        highScoreStorageArray.push((highScoreStorageArray.length + 1) + ", " + document.getElementById("initialsInput").value + " - " + myScore);
+        document.getElementById("highScore").innerHTML = ("    ||    ") + highScoreStorageArray.join("    ||    ") + ("    ||    ");   
+    }
+   
     // Store high score in local storage
-    localStorage.setItem("HighScore", highScoreStorage);  
-   // Show high score on the page
-    document.getElementById("highScore").innerHTML = highScoreStorage;   
+    localStorage.setItem("HighScore", JSON.stringify(highScoreStorageArray));  
 
     return;
 }
@@ -203,9 +223,27 @@ function clearHighscores()
 }
 
 function goBackToFirstPage () {
+
+    highscorePara.display = "block";
     // Redirect to home page
     document.location.href="/HW04-CodeQuiz/";
     return;
+}
+
+function showHighscore() {
+
+    highScoreSpanText.innerHTML = " ha ha ";
+    if (highScoreDiv.style.display == "block")
+        highScoreDiv.style.display = "none";
+    else
+        highScoreDiv.style.display = "block";
+
+    highScoreStorageArray = JSON.parse(localStorage.getItem("HighScore"));  
+    if (highScoreStorageArray == null)
+        highScoreSpanText.innerHTML = " none ";
+    else
+        highScoreSpanText.innerHTML = ("    ||    ") + highScoreStorageArray.join("    ||    ") + ("    ||    ");   
+    
 }
 
 // Add listener to submit element
@@ -219,4 +257,6 @@ answer4button.addEventListener("click", checkIfAnswer4IsCorrect);
 quizCompleteSubmit.addEventListener("click", showHighscores)
 goBackButton.addEventListener("click", goBackToFirstPage)
 clearHighscoresButton.addEventListener("click", clearHighscores)
+
+highscorePara.addEventListener("click", showHighscore)
 
